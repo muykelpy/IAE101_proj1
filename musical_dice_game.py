@@ -107,10 +107,6 @@ def construct_waltz():
     for i in trio_table:
         trio_selections.append(i[roll_dice(1)])
 
-    # for testing
-    print(minuet_selections)
-    print(trio_selections)
-
     # You should now have two lists: selections from minuet_table, selections 
     # from the trio table
     #
@@ -130,9 +126,12 @@ def construct_waltz():
         playMinuet.wait_done()
 
     # Same loop for selections from the trio_table
-    #
+    for i in trio_selections:
+        waveObj = simpleaudio.WaveObject.from_wave_file(trio_filename(i))
+        playTrio = waveObj.play()
+        playTrio.wait_done()
+
     # That's it.
-    
     return -1
 
 if __name__ == "__main__":
