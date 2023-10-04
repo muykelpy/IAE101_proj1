@@ -1,8 +1,8 @@
-# NAME
-# netid
-# STUDENT ID
+# Michael Kahen
+# mkahen
+# 114548382
 # 
-# DATE
+# 8/12/2023
 # musical_dice_game.py
 
 import random
@@ -124,7 +124,11 @@ def construct_waltz():
     # call play() on the WaveObject variable, store the player object returned 
     # by play in a new variable
     # call wait_done() on the player object variable
-    #
+    for i in minuet_selections:
+        waveObj = simpleaudio.WaveObject.from_wave_file(minuet_filename(i))
+        playMinuet = waveObj.play()
+        playMinuet.wait_done()
+
     # Same loop for selections from the trio_table
     #
     # That's it.
