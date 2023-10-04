@@ -66,7 +66,7 @@ trio_table = [tm01, tm02, tm03, tm04, tm05, tm06, tm07, tm08,
 # one of the wav audio files that contains a measure of music for the minuet
 # portion of Mozart's Musical Dice Game.
 def minuet_filename(mmid):
-    return "M" + nmid + ".wav"
+    return "M" + mmid + ".wav"
 
 # This function takes a string as an argument and constructs a string that names
 # one of the wav audio files that contains a measure of music for the trio
@@ -78,7 +78,7 @@ def trio_filename(tmid):
 # generates the result of rolling 'num' many 6-sided dice.
 def roll_dice(num):
     total = 0
-    for i in range(num):
+    for _ in range(num):
         total += random.randint(1,6)
     return total
 
@@ -95,12 +95,22 @@ def construct_waltz():
     # Loop over minuet_table,
     # For each column, simulate rolling 2 dice, and use the result as an index 
     # into the column
-    #
+    minuet_selections = []
+    for i in minuet_table:
+        minuet_selections.append(i[roll_dice(2)])
+
     # List to store selection from the trio table
     # Loop over trio_table
     # For each column, simulate 1 die, and use the result as index into that 
     # column
-    #
+    trio_selections = []
+    for i in trio_table:
+        trio_selections.append(i[roll_dice(1)])
+
+    # for testing
+    print(minuet_selections)
+    print(trio_selections)
+
     # You should now have two lists: selections from minuet_table, selections 
     # from the trio table
     #
